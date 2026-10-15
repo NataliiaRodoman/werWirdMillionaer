@@ -1,0 +1,153 @@
+
+// .about {
+//     display: flex;
+//     justify-content: center;
+//     flex-direction: row;
+//     max-width: 800px;
+//     margin: 0 auto;
+//     padding: 40px 20px;
+//     font-family: 'Segoe UI', Roboto, sans-serif;
+//     color: #d4af37;
+//     gap: 40px;
+//     padding: 30px;
+// }
+
+// h2 {
+//     display: flex;
+//     justify-content: center;
+//     color: #d4af37;
+//     margin: 40px;
+//     font-size: 24px;
+//     text-transform: uppercase;
+//     letter-spacing: 2px;
+// }
+
+// Фірмові кольори гри мільйонер
+$color-navy-dark: #090a14;
+$color-navy-light: #171932;
+$color-gold: #d4af37;
+$color-gold-glow: #ff9900;
+$color-white: #ffffff;
+
+.about-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  font-family: 'Segoe UI', Roboto, sans-serif;
+  color: $color-white;
+
+  h1 {
+    text-align: center;
+    font-size: 36px;
+    color: $color-gold;
+    margin-bottom: 40px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  h2 {
+    text-align: center;
+    color: $color-gold;
+    font-size: 22px;
+    margin-bottom: 25px;
+  }
+}
+
+// Стилі для великих карток із правилами
+.about-card {
+  background: linear-gradient(135deg, $color-navy-light 0%, $color-navy-dark 100%);
+  border: 2px solid $color-gold;
+  border-radius: 30px;
+  padding: 30px 40px;
+  margin-bottom: 35px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+  
+  // Стабільна та повільна анімація без стрибків (виправлено для роутингу)
+  animation: ruhigEinfliegen 2.0s ease-out forwards;
+
+  h2 {
+    text-align: left;
+    color: $color-gold;
+    font-size: 24px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid rgba($color-gold, 0.3);
+    padding-bottom: 8px;
+  }
+
+  p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: rgba($color-white, 0.9);
+
+    strong {
+      color: $color-gold-glow;
+    }
+  }
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 20px rgba($color-gold, 0.3);
+    transition: all 0.3s ease-in-out;
+  }
+}
+
+// Сітка для відображення Джокерів
+.joker-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-bottom: 40px;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr; // Адаптація під мобільні телефони
+  }
+}
+
+.joker-item {
+  background: linear-gradient(135deg, $color-navy-light 0%, $color-navy-dark 100%);
+  border: 1px solid $color-gold;
+  border-radius: 20px;
+  padding: 25px 20px;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  
+  // Така ж плавна анімація для всього блоку
+  animation: ruhigEinfliegen 2.0s ease-out forwards;
+
+  .joker-icon {
+    display: block;
+    font-size: 32px;
+    font-weight: bold;
+    color: $color-gold-glow;
+    margin-bottom: 10px;
+  }
+
+  .joker-text {
+    font-size: 14px;
+    color: $color-white;
+    line-height: 1.4;
+    opacity: 0.9;
+  }
+
+  &:hover {
+    border-color: $color-white;
+    background: $color-gold-glow;
+    transform: translateY(-5px);
+    transition: all 0.3s ease-in-out;
+
+    .joker-icon { color: $color-navy-dark; }
+    .joker-text { color: $color-navy-dark; font-weight: 500; }
+  }
+}
+
+// Безпечна та м'яка анімація появи знизу догори
+@keyframes ruhigEinfliegen {
+  0% {
+    opacity: 0;
+    transform: translateY(30px); // Починає рух плавно і всього на 30px нижче
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);    // Зупиняється чітко на місці
+  }
+}

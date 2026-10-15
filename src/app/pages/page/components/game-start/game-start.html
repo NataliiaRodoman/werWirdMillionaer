@@ -1,0 +1,13 @@
+
+@if (!istGestartet() && !feedback() && !istGewonnen()) {
+  <h1>Möchten Sie spielen?</h1>
+  
+  <button class="buttonStart" (click)="startGeklickt.emit()">Anfangen</button>
+} 
+
+@if (feedback()) {
+  <div class="fenster">
+    <p>{{ feedback() }}</p>
+    <button class="buttonStart" (click)="naechsterSchrittGeklickt.emit()">OK</button>
+  </div>
+}

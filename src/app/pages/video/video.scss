@@ -1,0 +1,75 @@
+/* Контейнер для секції відео */
+.video-section {
+  display: block;
+  text-align: center;
+  max-width: 800px;
+  margin: 100px auto;
+  padding: 30px 40px;
+  font-family: 'Segoe UI', Roboto, sans-serif;
+  background: linear-gradient(135deg, #171932 0%, #090a14 100%);
+  border: 2px solid #d4af37;
+  border-radius: 40px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+  animation: videoEinfliegen 2.0s ease-out forwards;
+}
+
+.video-section h2 {
+  font-size: 24px;
+  font-weight: bold;
+  color: #d4af37;
+  margin-bottom: 10px;
+  letter-spacing: 0.5px;
+}
+
+
+.video-section p {
+  font-size: 16px;
+  color: #fff; 
+  margin-bottom: 25px;
+  opacity: 0.9;
+}
+
+.watch-btn {
+  display: inline-flex;
+  justify-content: center; 
+  align-items: center;    
+  
+  color: #d4af37;
+  font-weight: 600;
+  font-size: 18px;
+  padding: 16px 35px;
+  border: 2px solid #d4af37;
+  border-radius: 30px; 
+  background: rgba(212, 175, 55, 0.05);
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+
+.watch-btn:hover {
+  color: #090a14;
+    background: #d4af37; 
+    box-shadow: 0 0 15px #d4af37, 0 0 5px rgba(255, 255, 255, 0.8);
+    transform: translateY(-2px); 
+    cursor: pointer;
+}
+
+
+.watch-btn:active {
+  transform: scale(0.98);
+}
+
+
+
+@keyframes videoEinfliegen {
+  0% {
+    opacity: 0;
+    transform: translateY(30px); 
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);    
+  }
+}

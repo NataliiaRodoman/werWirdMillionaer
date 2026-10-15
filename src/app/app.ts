@@ -1,12 +1,18 @@
-import { Component, signal } from '@angular/core';
+import { Component} from '@angular/core';
+import { Header } from './components/header/header';
+import { Frages } from './fragen';
 import { RouterOutlet } from '@angular/router';
 
 @Component({
-  imports: [RouterOutlet],
+  imports: [Header, RouterOutlet],
   selector: 'app-root',
   styleUrl: './app.scss',
   templateUrl: './app.html',
 })
 export class App {
-  protected readonly title = signal('werWirdMillionaer');
+  
+  readonly frages = Frages
+
+
+
 }

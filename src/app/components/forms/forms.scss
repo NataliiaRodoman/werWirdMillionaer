@@ -1,0 +1,122 @@
+.gewinner-form-container {
+  max-width: 450px;
+  margin: 40px auto;
+  padding: 30px;
+  background: linear-gradient(135deg, #171932 0%, #090a14 100%);
+  border: 3px solid #d4af37;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  color: #fff;
+  text-align: center;
+
+  animation: einfliegen 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+
+  h2 {
+    color: #d4af37;
+    margin-bottom: 10px;
+    font-size: 24px;
+  }
+
+  p {
+    color: #cccccc;
+    margin-bottom: 25px;
+    font-size: 15px;
+  }
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  margin-bottom: 20px;
+
+  label {
+    color: #d4af37;
+    font-weight: bold;
+    margin-bottom: 8px;
+    font-size: 15px;
+  }
+
+  input {
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid #171932;
+    border-radius: 10px;
+    padding: 12px 15px;
+    color: #fff;
+    font-size: 16px;
+    transition: all 0.3s ease;
+
+    &:focus {
+      outline: none;
+      border-color: #d4af37;
+      background: rgba(255, 255, 255, 0.1);
+      box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+    }
+  }
+
+  .error {
+    color: #ff6b6b;
+    font-size: 13px;
+    margin-top: 5px;
+  }
+}
+
+.button-container {
+  display: flex;
+  gap: 15px;
+  margin-top: 25px;
+}
+
+.buttonSenden, .buttonAbbrechen {
+  flex: 1;
+  padding: 12px;
+  font-weight: bold;
+  font-size: 16px;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.buttonSenden {
+  color: #090a14;
+  background: #d4af37;
+  border: 2px solid #fff;
+  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+
+  &:hover:not(:disabled) {
+    background: #ff9900;
+    color: #000;
+    box-shadow: 0 0 20px #ff9900;
+    transform: scale(1.02);
+  }
+
+  &:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+}
+
+.buttonAbbrechen {
+  color: #fff;
+  background: transparent;
+  border: 2px solid #666;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: #fff;
+  }
+}
+
+@keyframes einfliegen {
+  0% {
+    opacity: 0;
+    transform: translateY(150px) scale(0.5) rotateX(-45deg) rotateY(20deg);
+  }
+  70% {
+    transform: translateY(-5px) scale(1.02);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1) rotateX(0) rotateY(0);
+  }
+}

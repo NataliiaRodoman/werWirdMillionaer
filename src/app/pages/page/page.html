@@ -1,0 +1,32 @@
+
+@if ( gameState().istGewonnen ) {
+  <app-forms 
+    [gewonneneSumme]="gewonneneSumme"
+    (formGesendet)="onFormSubmit($event)" 
+    (abbrechen)="onFormCancel()">
+  </app-forms>
+}
+
+<app-game-start
+  [istGestartet]="gameState().istGestartet"
+  [istGewonnen]="gameState().istGewonnen"
+  [feedback]="feedback()"
+  (startGeklickt)="showText()"
+  (naechsterSchrittGeklickt)="naechsterSchritt()">
+</app-game-start>
+
+<app-game-question
+  [istGestartet]="gameState().istGestartet"
+  [istGewonnen]="gameState().istGewonnen"
+  [feedback]="feedback()"
+  [aktuelleFrage]="aktuelleFrage"
+  [aktuellePreis]="aktuellePreis"
+  [(alleAntworten)]="alleAntworten"
+  [(joker5050Verfuegbar)]="gameState().joker5050Verfuegbar"
+  [(jokerFreundVerfuegbar)]="gameState().jokerFreundVerfuegbar"
+  [(jokerSaalVerfuegbar)]="gameState().jokerSaalVerfuegbar"
+  (antwortGeprueft)="pruefeAntwort($event)"
+  (spielAbgebrochen)="spielAbbrechen()">
+</app-game-question>
+
+

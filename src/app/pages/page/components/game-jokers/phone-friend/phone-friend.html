@@ -1,0 +1,31 @@
+   <button 
+        class="joker-button" 
+        [disabled]="!jokerFreundVerfuegbar()" 
+        (click)="nutzeFreundJoker()">
+        <span>Frage Freund</span>
+    </button>
+
+@if (telefonAnrufAktiv()) {
+  <div class="handy-overlay">
+    <div class="handy-bildschirm">
+      
+      <div class="handy-kontakt">
+        <div class="avatar">👤</div>
+        <h3>Bester Freund</h3>
+        <p class="status">Am Telefon...</p>
+      </div>
+
+      <div class="handy-nachricht">
+        <p>{{ telefonText() }}</p>
+      </div>
+
+      <div class="handy-aktionen">
+      
+        <button class="button-telefon" (click)="schliesseTelefon()">
+          Auflegen & Weiterspielen
+        </button>
+      </div>
+
+    </div>
+  </div>
+}

@@ -1,0 +1,43 @@
+<div class="quiz-container">
+  
+  @if (istGestartet() && aktuelleFrage() && !feedback() && !istGewonnen()) {
+
+    <h2 class="hauptFrage">{{ aktuelleFrage()?.title }}</h2>
+    <p class="preis">Preis: {{ aktuellePreis() | currency: 'EUR' }}</p>
+
+    <button class="buttonStart" (click)="spielAbgebrochen.emit()">Geld nehmen / Aussteigen</button>
+
+    <div class="antworten-liste">
+      @for (antwort of alleAntworten(); track $index) {
+        <button (click)="antwortGeprueft.emit(antwort)">
+          {{ antwort }}
+        </button>
+      }
+    </div>
+
+    <div class="joker-container">
+
+       <app-fifty-fiffty 
+       [aktuelleFrage]="aktuelleFrage()" 
+       [(alleAntworten)]="alleAntworten"
+       [(joker5050Verfuegbar)]="joker5050Verfuegbar">
+      </app-fifty-fiffty>
+
+      <app-phone-friend 
+        [aktuelleFrage]="aktuelleFrage()"
+        [(jokerFreundVerfuegbar)]="jokerFreundVerfuegbar">
+      </app-phone-friend>
+
+      <app-audience
+        [aktuelleFrage]="aktuelleFrage()"
+        [(alleAntworten)]="alleAntworten"
+        [(jokerSaalVerfuegbar)]="jokerSaalVerfuegbar">
+      </app-audience>
+    </div>
+
+    <h2 class="hauptFrage">{{aktuelleFrage()?.antwortR}}</h2>
+
+  } @else if (!istGewonnen() && !istGestartet()) {
+    <h2 class="hauptFrage">Das Spiel läuft nicht.</h2>
+  }
+</div>

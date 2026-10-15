@@ -1,0 +1,32 @@
+  <button 
+        class="joker-button" 
+        [disabled]="!jokerSaalVerfuegbar()" 
+        (click)="nutzeSaalJoker()">
+        <span>Frage Saal</span>
+  </button>
+
+  @if (zeigeSaalGrafik()) {
+  <div class="saal-joker-overlay">
+    <div class="saal-joker-modal">
+      <h3>Ergebnis der Publikumsbefragung</h3>
+      
+      <div class="saal-chart-container">
+        @for (daten of saalJokerDaten(); track $index) {
+          <div class="saal-chart-column">
+            <div class="saal-bar-wrapper">
+      
+              <div class="saal-bar" [style.height.%]="daten.prozent" [class.richtig-bar]="daten.istRichtig">
+                <span class="saal-prozent-label">{{ daten.prozent }}%</span>
+              </div>
+            </div>
+            <div class="saal-antwort-label">{{ daten.text }}</div>
+          </div>
+        }
+      </div>
+
+      <button class="saal-close-button" (click)="schliesseSaalJoker()">
+        Schließen & Weiterspielen
+      </button>
+    </div>
+  </div>
+}
