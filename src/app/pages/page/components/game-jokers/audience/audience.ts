@@ -21,7 +21,7 @@ export class Audience {
 
     if (!aktuelleFrage) return [];
 
-    const prozentRichtig = 80;
+    const prozentRichtig = 60;
     const falscheProzente = aktuelleFrage.audience || [];
 
     const prozentMap = new Map<string, number>();

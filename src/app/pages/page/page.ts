@@ -39,12 +39,6 @@ export class Page {
   aktuellePreis: number = 0;
   gewonneneSumme: number = 0;
   
-  // generiereZufaelligeFragen() {
-  //   this.frages = [...Frages]
-  //     .sort(() => Math.random() - 0.5)
-  //     .slice(0, 15);
-  // }
-  
    spielZuruecksetzen() {
 
     this.gameState.set({
@@ -64,7 +58,6 @@ export class Page {
 
   showText() {
     this.spielZuruecksetzen(); 
-   // this.generiereZufaelligeFragen();
     this.feedback.set('Hallo, wir starten!');
   }
 
@@ -80,7 +73,7 @@ export class Page {
     } else {
       benoetigteSchwierigkeit = 1; 
     }
-console.log( benoetigteSchwierigkeit);
+    //console.log( benoetigteSchwierigkeit);
 
     const passendeFragen = this.frages.filter(f => f.schwierigkeit === benoetigteSchwierigkeit);
 
@@ -154,18 +147,6 @@ console.log( benoetigteSchwierigkeit);
       this.ladeFrageUndMischeAntworten();
       return;
     }
-
-    // if (state.istGestartet) {
-
-    //   if (this.aktuelleFrageIndex < this.frages.length - 1) {
-    //     this.aktuelleFrageIndex++; 
-    //     this.ladeFrageUndMischeAntworten();
-    //   } else {
-    //     this.gewonneneSumme = this.gewinnStufen[14]; 
-    //     this.feedback.set(`Gratulation! Sie haben ${this.gewonneneSumme} € gewonnen!`);
-    //     this.gameState.update(s => ({ ...s, istGewonnen: true, istGestartet: false }));
-    //   }
-    // }
 
     if (state.istGestartet) {
       
