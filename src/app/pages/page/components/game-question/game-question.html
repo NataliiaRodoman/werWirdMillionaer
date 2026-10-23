@@ -34,9 +34,6 @@
         [(jokerSaalVerfuegbar)]="jokerSaalVerfuegbar">
       </app-audience>
     </div>
-
-    <h2 class="hauptFrage">{{aktuelleFrage()?.antwortR}}</h2>
-
   } @else if (!istGewonnen() && !istGestartet()) {
     <h2 class="hauptFrage">Das Spiel läuft nicht.</h2>
   }
