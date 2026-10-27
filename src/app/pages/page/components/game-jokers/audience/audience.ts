@@ -7,15 +7,14 @@ import { Frage } from '../../../../../models/mode.model';
   styleUrl: './audience.scss',
   templateUrl: './audience.html',
 })
-export class Audience {
 
+export class Audience {
   aktuelleFrage = input<Frage | undefined>();
   alleAntworten = model<string[]>([]);
   jokerSaalVerfuegbar = model<boolean>(true);
   zeigeSaalGrafik = signal(false);
 
   saalJokerDaten = computed(() => {
-
     const aktuelleFrage = this.aktuelleFrage();
     const alleAntworten = this.alleAntworten();
 
@@ -34,7 +33,6 @@ export class Audience {
     const originaleVierAntworten = [aktuelleFrage.antwortR, ...aktuelleFrage.antwortF];
 
     return originaleVierAntworten.map(antwort => {
-  
       const istNochSichtbar = alleAntworten.includes(antwort);
       const finalerProzentwert = istNochSichtbar ? (prozentMap.get(antwort) || 0) : 0;
 
@@ -45,7 +43,6 @@ export class Audience {
       };
     });
   });
-
 
   nutzeSaalJoker() {
     if (!this.aktuelleFrage || !this.jokerSaalVerfuegbar()) return;

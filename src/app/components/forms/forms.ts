@@ -1,6 +1,6 @@
 
 import { CurrencyPipe } from '@angular/common'; 
-import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
+import { Component, EventEmitter, Input, Output, inject, input, output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 @Component({
@@ -12,23 +12,19 @@ import { FormBuilder, FormGroup, Validators, ReactiveFormsModule, FormsModule } 
 })
 export class Forms {
   private fb = inject(FormBuilder);
+  gewonneneSumme = input<number>(0);
+  formGesendet = output<any>();
+  abbrechen = output<void>();
 
-   @Input() gewonneneSumme: number =0;
-
-    winnerForm: FormGroup = this.fb.group({
+  winnerForm: FormGroup = this.fb.group({
     name: ['', [Validators.required, Validators.minLength(2)]],
     telefon: ['', [Validators.required, Validators.minLength(6)]],
     email: ['', [Validators.required, Validators.email]]
   });
-
-  @Output() formGesendet = new EventEmitter<any>();
-  @Output() abbrechen = new EventEmitter<void>();
-
   
   sendeDaten() {
     if (this.winnerForm.valid) {
-
-      const finaleDaten = { ...this.winnerForm.value, gewinn: this.gewonneneSumme };
+      const finaleDaten = { ...this.winnerForm.value, gewinn: this.gewonneneSumme() };
 
       this.formGesendet.emit(finaleDaten);
       alert('Vielen Dank! Ihre Daten wurden übermittelt.');

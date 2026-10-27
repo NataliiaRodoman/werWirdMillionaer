@@ -1,4 +1,4 @@
-import { Component, EventEmitter, input, model, Output } from '@angular/core';
+import { Component, input, model, output } from '@angular/core';
 import { Frage } from '../../../../models/mode.model';
 import { FiftyFiffty } from '../game-jokers/fifty-fiffty/fifty-fiffty';
 import { PhoneFriend } from '../game-jokers/phone-friend/phone-friend';
@@ -22,7 +22,6 @@ export class GameQuestion {
   jokerFreundVerfuegbar = model<boolean>(true);
   jokerSaalVerfuegbar = model<boolean>(true);
   alleAntworten = model<string[]>([]);
-
-  @Output() antwortGeprueft = new EventEmitter<string>();
-  @Output() spielAbgebrochen = new EventEmitter<void>();
+  antwortGeprueft = output<string>();
+  spielAbgebrochen = output<void>();
 }

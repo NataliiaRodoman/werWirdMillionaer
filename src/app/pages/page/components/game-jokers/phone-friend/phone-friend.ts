@@ -7,11 +7,10 @@ import { Frage } from '../../../../../models/mode.model';
   styleUrl: './phone-friend.scss',
   templateUrl: './phone-friend.html',
 })
+
 export class PhoneFriend {
-  
   aktuelleFrage = input<Frage | undefined>();
   jokerFreundVerfuegbar = model<boolean>(true);
-
   telefonAnrufAktiv = signal(false); 
   telefonText = signal(''); 
 

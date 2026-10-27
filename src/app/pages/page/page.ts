@@ -13,7 +13,7 @@ import { GameQuestion } from './components/game-question/game-question';
 })
 
 export class Page {
-
+  feedback = signal<string | null>(null); 
   gameState = signal<GameState>({
     istGestartet: false,
     istGewonnen: false,
@@ -27,8 +27,8 @@ export class Page {
   aktuelleFrageIndex: number = 0;
   aktuelleFrage: Frage | undefined;
   alleAntworten: string[] = [];
-  feedback = signal<string | null>(null); 
-  
+  aktuellePreis: number = 0;
+  gewonneneSumme: number = 0;
 
   gewinnStufen: number[] = [
     100, 200, 300, 500, 1000, 
@@ -36,11 +36,7 @@ export class Page {
     64000, 125000, 250000, 500000, 1000000
   ];
 
-  aktuellePreis: number = 0;
-  gewonneneSumme: number = 0;
-  
    spielZuruecksetzen() {
-
     this.gameState.set({
       istGestartet: false,
       istGewonnen: false,
@@ -61,8 +57,6 @@ export class Page {
     this.feedback.set('Hallo, wir starten!');
   }
 
- 
-
   ladeFrageUndMischeAntworten() {
     let benoetigteSchwierigkeit = 1;
 
@@ -73,12 +67,10 @@ export class Page {
     } else {
       benoetigteSchwierigkeit = 1; 
     }
-    //console.log( benoetigteSchwierigkeit);
 
     const passendeFragen = this.frages.filter(f => f.schwierigkeit === benoetigteSchwierigkeit);
 
     if (passendeFragen.length > 0) {
-
       const zufallsIndex = Math.floor(Math.random() * passendeFragen.length);
 
       this.aktuelleFrage = passendeFragen[zufallsIndex];
@@ -97,8 +89,18 @@ export class Page {
 
   spielAbbrechen() {
     this.feedback.set(`Spiel beendet. Ihr Gewinn: ${this.gewonneneSumme} €.`);
-    if (this.gewonneneSumme) {
-      this.gameState.update(state =>({...state, istGewonnen: true}))
+    if (this.gewonneneSumme > 0) {
+      this.gameState.update(state =>({
+        ...state,
+        istGewonnen: true,
+        istGestartet: false
+      }));
+    } else {
+      this.gameState.update(state => ({
+        ...state,
+        istVerloren: true,
+        istGestartet:false
+      }))
     }
   }
 
@@ -129,7 +131,6 @@ export class Page {
         this.gameState.update(state =>({...state, istVerloren: true, istGestartet: false}));
       }
     }
-
   }
 
   naechsterSchritt() {
@@ -140,6 +141,11 @@ export class Page {
       return; 
     }
 
+    if (state.istGewonnen) {
+      this.feedback.set(null);
+      return;
+    }
+    
     this.feedback.set(null); 
 
     if (!state.istGestartet && !state.istGewonnen && !state.istVerloren) {
@@ -174,7 +180,6 @@ export class Page {
     this.feedback.set('Spiel abgebrochen.');
   }
 
-  
   setJoker5050Verfuegbar() {
     this.gameState.update(s => ({ ...s, joker5050Verfuegbar: false }));
   }

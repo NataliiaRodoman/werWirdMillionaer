@@ -7,8 +7,8 @@ import { Frage } from '../../../../../models/mode.model';
   styleUrl: './fifty-fiffty.scss',
   templateUrl: './fifty-fiffty.html',
 })
-export class FiftyFiffty {
 
+export class FiftyFiffty {
   aktuelleFrage = input<Frage | undefined>();
   alleAntworten = model<string[]>([]);
   joker5050Verfuegbar = model<boolean>(true);
